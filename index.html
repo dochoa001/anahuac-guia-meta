@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Compartir páginas con B&amp;O</title>
+<meta name="description" content="Guía paso a paso para compartir las páginas de Facebook de Anáhuac Posgrados con Black &amp; Orange.">
+<style>
+  :root {
+    --bg: #f6f5f3;
+    --card: #ffffff;
+    --text: #1d1d1f;
+    --muted: #5f5f66;
+    --line: #e4e2de;
+    --accent: #e8620f;
+    --accent-soft: #fdeee3;
+    --ok: #1f7a4d;
+    --ok-soft: #e5f4ec;
+    --warn-soft: #fff6dc;
+    --warn-line: #f0d48a;
+    --code: #f1efec;
+    --shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141416;
+      --card: #1e1e21;
+      --text: #f2f2f3;
+      --muted: #a6a6ad;
+      --line: #313136;
+      --accent: #ff8a3d;
+      --accent-soft: #3a2616;
+      --ok: #5fd39a;
+      --ok-soft: #173326;
+      --warn-soft: #33290f;
+      --warn-line: #6b5520;
+      --code: #2a2a2e;
+      --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141416; --card: #1e1e21; --text: #f2f2f3; --muted: #a6a6ad; --line: #313136;
+    --accent: #ff8a3d; --accent-soft: #3a2616; --ok: #5fd39a; --ok-soft: #173326;
+    --warn-soft: #33290f; --warn-line: #6b5520; --code: #2a2a2e; --shadow: none;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 28px 16px 64px; }
+  header .brand { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); flex: none; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 10px 0 8px; letter-spacing: -.01em; }
+  h2 { font-size: 20px; margin: 36px 0 12px; }
+  p { margin: 0 0 12px; }
+  .lead { color: var(--muted); font-size: 17px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px; box-shadow: var(--shadow); margin-bottom: 14px;
+  }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 620px) { .grid2 { grid-template-columns: 1fr; } }
+  .card h3 { margin: 0 0 8px; font-size: 16px; }
+  .card ul { margin: 0; padding-left: 20px; }
+  .card li { margin: 4px 0; }
+  .muted { color: var(--muted); }
+  .small { font-size: 14px; }
+
+  /* Datos para copiar */
+  .copyrow {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    background: var(--accent-soft); border-radius: 12px; padding: 14px 16px; flex-wrap: wrap;
+  }
+  .copyrow .label { font-size: 14px; color: var(--muted); }
+  .big { font: 600 24px/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .02em; word-break: break-all; }
+  button.copy {
+    appearance: none; border: 1px solid var(--accent); background: var(--card); color: var(--accent);
+    font: 600 14px/1 inherit; font-family: inherit; padding: 10px 14px; border-radius: 10px; cursor: pointer; white-space: nowrap;
+    min-height: 40px;
+  }
+  button.copy:hover { background: var(--accent); color: #fff; }
+  button.copy.done { border-color: var(--ok); color: var(--ok); background: var(--ok-soft); }
+
+  /* Pasos */
+  ol.steps { list-style: none; padding: 0; margin: 0; counter-reset: paso; }
+  ol.steps > li {
+    counter-increment: paso; position: relative; background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 16px 16px 16px 64px; margin-bottom: 12px; box-shadow: var(--shadow);
+  }
+  ol.steps > li::before {
+    content: counter(paso); position: absolute; left: 16px; top: 16px; width: 34px; height: 34px;
+    border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700;
+    display: grid; place-items: center;
+  }
+  ol.steps > li h3 { margin: 4px 0 6px; font-size: 17px; }
+  ol.steps > li p:last-child { margin-bottom: 0; }
+  .ui {
+    display: inline-block; background: var(--code); border: 1px solid var(--line); border-radius: 6px;
+    padding: 0 6px; font-weight: 600; white-space: nowrap;
+  }
+  .ui.wrap-ok { white-space: normal; }
+  a { color: var(--accent); }
+  .btnlink {
+    display: inline-block; margin-top: 4px; background: var(--accent); color: #fff; text-decoration: none;
+    font-weight: 600; padding: 10px 14px; border-radius: 10px;
+  }
+  .btnlink:hover { filter: brightness(1.05); }
+
+  .note { border-radius: 12px; padding: 12px 14px; margin-top: 10px; font-size: 15px; }
+  .note.tip { background: var(--ok-soft); }
+  .note.warn { background: var(--warn-soft); border: 1px solid var(--warn-line); }
+
+  /* Mini maqueta del permiso */
+  .mock { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-top: 10px; font-size: 14px; background: var(--bg); }
+  .mock .sec { font-weight: 700; margin: 8px 0 4px; }
+  .mock .sec:first-child { margin-top: 0; }
+  .mock .row { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
+  .mock .row.dim { opacity: .45; }
+  .sw { width: 32px; height: 18px; border-radius: 10px; background: var(--line); position: relative; flex: none; }
+  .sw::after { content: ""; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; }
+  .sw.on { background: var(--ok); }
+  .sw.on::after { left: 16px; }
+  .mock .pick { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; padding: 6px; }
+
+  /* Tabla de páginas */
+  .pages { width: 100%; border-collapse: collapse; }
+  .pages th, .pages td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  .pages th { font-size: 13px; color: var(--muted); font-weight: 600; }
+  .pages tr:last-child td { border-bottom: 0; }
+  .pages .id { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 14px; }
+  .pages input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--ok); }
+  .pages .who { font-size: 13px; color: var(--muted); overflow-wrap: anywhere; word-break: break-word; }
+  .pages td { min-width: 0; }
+  .pages tr.done td:not(:last-child) { opacity: .55; }
+  @media (max-width: 620px) {
+    .pages thead { display: none; }
+    .pages, .pages tbody, .pages tr, .pages td { display: block; width: 100%; }
+    .pages tr { border-bottom: 1px solid var(--line); padding: 10px 0; display: grid; grid-template-columns: 1fr auto; gap: 6px 10px; }
+    .pages td { border: 0; padding: 0; }
+    .pages td.c-name { grid-column: 1 / 2; }
+    .pages td.c-check { grid-column: 2 / 3; grid-row: 1 / 3; align-self: center; }
+    .pages td.c-id { grid-column: 1 / 2; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .pages td.c-copy { display: none; }
+    .pages td.c-id .copy-inline { display: inline-block; }
+  }
+  .copy-inline { display: none; }
+  .progress { font-size: 14px; color: var(--muted); margin-top: 8px; }
+
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 4px 16px; box-shadow: var(--shadow); }
+  details + details { margin-top: 12px; }
+  summary { cursor: pointer; font-weight: 700; padding: 12px 0; }
+  details ol { margin: 4px 0 14px; padding-left: 22px; }
+  details li { margin: 6px 0; }
+
+  footer { margin-top: 40px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); padding-top: 16px; }
+
+  @media print {
+    body { background: #fff; }
+    .card, ol.steps > li, details { box-shadow: none; }
+    button.copy, .btnlink { display: none; }
+    details { display: block; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand"><span class="dot"></span><span>Black &amp; Orange · Anáhuac Posgrados</span></div>
+  <h1>Compartir las páginas de Facebook con Black &amp; Orange</h1>
+  <p class="lead">Guía paso a paso para conectar el reporte de leads de pauta. Son unos 10 minutos y se hace una sola vez.</p>
+</header>
+
+<section class="grid2" aria-label="Antes de empezar">
+  <div class="card">
+    <h3>Para qué es</h3>
+    <p class="small">Meta guarda los leads de los anuncios en la página de Facebook donde vive cada formulario. Al compartir las páginas, el reporte puede comparar esos leads con HubSpot cada hora.</p>
+    <p class="small muted" style="margin:0">Lo usamos solo para leer los leads. No publicamos, no tocamos campañas ni formularios, y el acceso se puede retirar cuando quieras.</p>
+  </div>
+  <div class="card">
+    <h3>Qué se necesita</h3>
+    <ul class="small">
+      <li>Entrar con la cuenta que administra el portafolio de Posgrados en Meta.</li>
+      <li>Tener a la mano esta guía para copiar los números.</li>
+      <li>Unos 10 minutos.</li>
+    </ul>
+  </div>
+</section>
+
+<h2>Número para copiar</h2>
+<div class="copyrow">
+  <div>
+    <div class="label">Identificador del portafolio de Black &amp; Orange</div>
+    <div class="big" id="bno-id">1607393026141621</div>
+  </div>
+  <button class="copy" data-copy="1607393026141621" aria-label="Copiar el identificador de Black &amp; Orange">Copiar</button>
+</div>
+
+<h2>Las 6 páginas</h2>
+<div class="card" style="padding:8px 14px">
+  <table class="pages" id="pages">
+    <thead>
+      <tr><th>Página</th><th>ID para buscar</th><th></th><th>Lista</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="c-name"><strong>Posgrados Anáhuac</strong><br><span class="who"><a href="https://www.facebook.com/PosgradosAnahuac" target="_blank" rel="noopener">facebook.com/PosgradosAnahuac</a></span></td>
+        <td class="c-id"><span class="id">262189143968520</span> <button class="copy copy-inline" data-copy="262189143968520">Copiar</button></td>
+        <td class="c-copy"><button class="copy" data-copy="262189143968520" aria-label="Copiar ID de Posgrados Anáhuac">Copiar</button></td>
+        <td class="c-check"><input type="checkbox" aria-label="Posgrados Anáhuac lista"></td>
+      </tr>
+      <tr>
+        <td class="c-name"><strong>Facultad de Ciencias de la Salud</strong><br><span class="who"><a href="https://www.facebook.com/FCSanahuac" target="_blank" rel="noopener">facebook.com/FCSanahuac</a></span></td>
+        <td class="c-id"><span class="id">129403220515244</span> <button class="copy copy-inline" data-copy="129403220515244">Copiar</button></td>
+        <td class="c-copy"><button class="copy" data-copy="129403220515244" aria-label="Copiar ID de Ciencias de la Salud">Copiar</button></td>
+        <td class="c-check"><input type="checkbox" aria-label="Ciencias de la Salud lista"></td>
+      </tr>
+      <tr>
+        <td class="c-name"><strong>Facultad de Educación y Humanidades</strong><br><span class="who"><a href="https://www.facebook.com/FacultadDeEducacionYHumanidades" target="_blank" rel="noopener">facebook.com/FacultadDeEducacionYHumanidades</a></span></td>
+        <td class="c-id"><span class="id">388080141213386</span> <button class="copy copy-inline" data-copy="388080141213386">Copiar</button></td>
+        <td class="c-copy"><button class="copy" data-copy="388080141213386" aria-label="Copiar ID de Educación y Humanidades">Copiar</button></td>
+        <td class="c-check"><input type="checkbox" aria-label="Educación y Humanidades lista"></td>
+      </tr>
+      <tr>
+        <td class="c-name"><strong>Facultad de Derecho</strong><br><span class="who"><a href="https://www.facebook.com/FacultadDeDerechoUniversidadAnahuacMexico" target="_blank" rel="noopener">facebook.com/FacultadDeDerechoUniversidadAnahuacMexico</a></span></td>
+        <td class="c-id"><span class="id">398657293478988</span> <button class="copy copy-inline" data-copy="398657293478988">Copiar</button></td>
+        <td class="c-copy"><button class="copy" data-copy="398657293478988" aria-label="Copiar ID de Derecho">Copiar</button></td>
+        <td class="c-check"><input type="checkbox" aria-label="Derecho lista"></td>
+      </tr>
+      <tr>
+        <td class="c-name"><strong>Arquitectura</strong><br><span class="who"><a href="https://www.facebook.com/ArquitecturaUniversidadAnahuacNorte" target="_blank" rel="noopener">facebook.com/ArquitecturaUniversidadAnahuacNorte</a></span></td>
+        <td class="c-id"><span class="id">393478720676030</span> <button class="copy copy-inline" data-copy="393478720676030">Copiar</button></td>
+        <td class="c-copy"><button class="copy" data-copy="393478720676030" aria-label="Copiar ID de Arquitectura">Copiar</button></td>
+        <td class="c-check"><input type="checkbox" aria-label="Arquitectura lista"></td>
+      </tr>
+      <tr>
+        <td class="c-name"><strong>Responsabilidad Social</strong><br><span class="who"><a href="https://www.facebook.com/frs.anahuac" target="_blank" rel="noopener">facebook.com/frs.anahuac</a></span></td>
+        <td class="c-id"><span class="id">177274365670708</span> <button class="copy copy-inline" data-copy="177274365670708">Copiar</button></td>
+        <td class="c-copy"><button class="copy" data-copy="177274365670708" aria-label="Copiar ID de Responsabilidad Social">Copiar</button></td>
+        <td class="c-check"><input type="checkbox" aria-label="Responsabilidad Social lista"></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="progress" id="progress" aria-live="polite">0 de 6 páginas listas</div>
+</div>
+<p class="small muted">Si alguna página no aparece al buscarla en tu portafolio, no pasa nada: la anotas y vemos juntos quién la administra.</p>
+
+<h2>Paso a paso</h2>
+<ol class="steps">
+  <li>
+    <h3>Abres la sección de Páginas</h3>
+    <p>Para empezar, entras a la configuración de páginas de Meta:</p>
+    <a class="btnlink" href="https://business.facebook.com/latest/settings/pages" target="_blank" rel="noopener">Abrir Configuración › Páginas</a>
+    <div class="note tip">Arriba a la izquierda, junto a <span class="ui">Configuración</span>, aparece el nombre del portafolio. Revisas que sea el de Posgrados; si aparece otro, das clic en el nombre y eliges el correcto.</div>
+  </li>
+  <li>
+    <h3>Buscas la página</h3>
+    <p>En el buscador <span class="ui">Buscar por nombre o ID</span> pegas el ID de la página (de la tabla de arriba) y das clic en ella. Se abre su detalle a la derecha.</p>
+  </li>
+  <li>
+    <h3>Das clic en «Asignar socio»</h3>
+    <p>Arriba del detalle hay tres botones: <span class="ui">Asignar personas</span>, <span class="ui">Asignar socio</span> y <span class="ui">Conectar activos</span>. Das clic en <span class="ui">Asignar socio</span>.</p>
+  </li>
+  <li>
+    <h3>Eliges «Identificador del negocio»</h3>
+    <p>Aparece la ventana <em>Asignar socio por:</em> con dos opciones. Eliges <span class="ui">Identificador del negocio</span>.</p>
+  </li>
+  <li>
+    <h3>Pegas el número de Black &amp; Orange</h3>
+    <p>Se abre la ventana <em>Compartir esta página de Facebook con un socio</em>. En el campo <span class="ui">Partner business ID</span> pegas:</p>
+    <div class="copyrow" style="margin-top:6px">
+      <div class="big" style="font-size:20px">1607393026141621</div>
+      <button class="copy" data-copy="1607393026141621">Copiar</button>
+    </div>
+    <p class="small muted" style="margin-top:8px">Ese campo puede aparecer en inglés; es normal.</p>
+  </li>
+  <li>
+    <h3>Activas el permiso</h3>
+    <p>En la misma ventana hay tres grupos de permisos. Solo activas <strong>un interruptor</strong>: el del grupo <span class="ui wrap-ok">Acceso parcial (herramientas empresariales y Facebook)</span>, que dice <em>«Contenido, mensajes, actividad de la comunidad, anuncios, estadísticas, <strong>clientes potenciales</strong>…»</em>.</p>
+    <div class="mock" aria-hidden="true">
+      <div class="sec">Acceso parcial (solo herramientas empresariales)</div>
+      <div class="row dim"><span class="sw"></span>Contenido, Mensajes, Anuncios, Estadísticas… (los dejas apagados)</div>
+      <div class="pick">
+        <div class="sec">Acceso parcial (herramientas empresariales y Facebook)</div>
+        <div class="row"><span class="sw on"></span><strong>Contenido, mensajes, actividad de la comunidad, anuncios, estadísticas, clientes potenciales…</strong></div>
+      </div>
+      <div class="sec">Acceso total</div>
+      <div class="row dim"><span class="sw"></span>Todo (excepto las acciones delicadas) — no hace falta</div>
+    </div>
+    <div class="note tip">Es la única opción que incluye <strong>clientes potenciales</strong>, que es lo que el reporte necesita leer. No hace falta el acceso total.</div>
+  </li>
+  <li>
+    <h3>Das clic en «Asignar»</h3>
+    <p>Abajo a la derecha das clic en <span class="ui">Asignar</span>. Para confirmar que quedó, en el detalle de la página abres la pestaña <span class="ui">Socios</span>: ahí aparece Black &amp; Orange.</p>
+  </li>
+  <li>
+    <h3>Repites con las demás páginas</h3>
+    <p>Vuelves al paso 2 con el siguiente ID de la tabla y vas marcando cada página como lista. Son 6 en total.</p>
+  </li>
+</ol>
+
+<h2>Una revisión rápida al final</h2>
+<div class="card">
+  <p>En el menú de la izquierda, dentro de <span class="ui">Integraciones</span>, está <span class="ui">Acceso a clientes potenciales</span>.</p>
+  <a class="btnlink" href="https://business.facebook.com/latest/settings/leads_access" target="_blank" rel="noopener">Abrir Acceso a clientes potenciales</a>
+  <p style="margin-top:12px">Eliges cada página y revisas el mensaje:</p>
+  <ul class="small">
+    <li>Si dice <em>«De forma predeterminada, todos los administradores de la página y los CRM conectados… pueden acceder a los clientes potenciales»</em> con el botón <span class="ui">Personalizar acceso</span>: <strong>no hay que hacer nada</strong>.</li>
+    <li>Si en lugar de eso aparece una lista de personas y CRM, nos avisas y lo resolvemos juntos en ese momento.</li>
+  </ul>
+</div>
+
+<h2>Si la opción «Asignar socio» no aparece</h2>
+<details>
+  <summary>Plan B: compartir con personas en lugar del portafolio</summary>
+  <ol>
+    <li>En el menú de la izquierda, en <span class="ui">Usuarios</span> › <span class="ui">Personas</span>, das clic en <span class="ui">Invitar a personas</span>.</li>
+    <li>En <em>Ingresa las direcciones de correo electrónico</em> escribes: <strong>dochoa@black-n-orange.com</strong> y <strong>mhernandez@black-n-orange.com</strong>. Das clic en <span class="ui">Siguiente</span>.</li>
+    <li>En <em>Otorgar acceso</em> dejas el acceso parcial (no hace falta control total del portafolio).</li>
+    <li>En <em>Asignar activos</em> eliges <strong>Páginas</strong>, marcas las 6 páginas y activas el mismo permiso del paso 6.</li>
+    <li>En <em>Revisar</em> confirmas y envías la invitación. Nosotros la aceptamos desde nuestro correo.</li>
+  </ol>
+</details>
+
+<h2>Qué sigue</h2>
+<div class="card">
+  <p style="margin:0">Cuando estén las 6 páginas (o las que se puedan), nos avisas y hacemos una primera prueba de lectura ese mismo día. Si algo no coincide con esta guía, lo vemos en vivo.</p>
+</div>
+
+<footer>
+  <p style="margin:0">Dudas: David Ochoa · <a href="mailto:dochoa@black-n-orange.com">dochoa@black-n-orange.com</a></p>
+  <p class="small" style="margin:6px 0 0">Black &amp; Orange · Guía preparada en octubre de 2026 con la configuración actual de Meta Business Suite.</p>
+</footer>
+
+</div>
+
+<script>
+  (function () {
+    // Copiar al portapapeles con respaldo para navegadores sin la API moderna.
+    function copiar(texto) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(texto);
+      return new Promise(function (ok, fallo) {
+        var t = document.createElement('textarea');
+        t.value = texto; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+        document.body.appendChild(t); t.select();
+        try { document.execCommand('copy') ? ok() : fallo(); } catch (e) { fallo(e); }
+        document.body.removeChild(t);
+      });
+    }
+    document.querySelectorAll('button.copy').forEach(function (b) {
+      var original = b.textContent;
+      b.addEventListener('click', function () {
+        copiar(b.getAttribute('data-copy')).then(function () {
+          b.textContent = 'Copiado'; b.classList.add('done');
+          setTimeout(function () { b.textContent = original; b.classList.remove('done'); }, 1800);
+        }, function () { b.textContent = 'Selecciona y copia'; });
+      });
+    });
+
+    // Lista de páginas: solo en esta pestaña, no se guarda nada.
+    var checks = document.querySelectorAll('#pages input[type=checkbox]');
+    var progreso = document.getElementById('progress');
+    function actualizar() {
+      var n = 0;
+      checks.forEach(function (c) { c.closest('tr').classList.toggle('done', c.checked); if (c.checked) n++; });
+      progreso.textContent = n + ' de 6 páginas listas' + (n === 6 ? ' ✓' : '');
+    }
+    checks.forEach(function (c) { c.addEventListener('change', actualizar); });
+    actualizar();
+  })();
+</script>
+</body>
+</html>
